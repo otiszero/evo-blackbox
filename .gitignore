@@ -1,0 +1,12 @@
+# EvoMaster JAR (file quá lớn cho GitHub)
+evomaster.jar
+
+# Node modules
+node_modules/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
