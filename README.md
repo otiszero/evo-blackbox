@@ -75,6 +75,35 @@ configs:
 
 ### Cách 1: Sử dụng script có sẵn
 
+Trước khi chạy, mở file `run-evomaster.sh` và thay đổi các tham số:
+
+```bash
+#!/bin/bash
+
+# 1. Thay YOUR_JWT_TOKEN bằng JWT token của bạn
+export TEST_TOKEN="YOUR_JWT_TOKEN"
+
+java -jar evomaster.jar \
+  --blackBox true \
+  # 2. Thay URL swagger/OpenAPI spec của API cần test
+  --bbSwaggerUrl https://your-api.com/docs-json \
+  --outputFormat JS_JEST \
+  --outputFolder ./evomaster-tests \
+  # 3. Thời gian chạy (30m = 30 phút, 1h = 1 giờ)
+  --maxTime 30m \
+  --header0 "Authorization:Bearer $TEST_TOKEN"
+```
+
+Các tham số cần thay đổi:
+
+| Tham số | Mô tả | Ví dụ |
+|---------|-------|-------|
+| `TEST_TOKEN` | JWT token để authenticate với API | `eyJhbGciOiJIUzI1NiIs...` |
+| `--bbSwaggerUrl` | URL của OpenAPI/Swagger JSON spec | `https://api.example.com/docs-json` |
+| `--maxTime` | Thời gian chạy tối đa | `10m`, `30m`, `1h` |
+
+Sau đó chạy:
+
 ```bash
 chmod +x run-evomaster.sh
 ./run-evomaster.sh
@@ -93,6 +122,8 @@ java -jar evomaster.jar \
 ```
 
 ### Cách 3: Sử dụng file cấu hình
+
+Chỉnh sửa file `em.yaml` rồi chạy:
 
 ```bash
 java -jar evomaster.jar --configPath em.yaml

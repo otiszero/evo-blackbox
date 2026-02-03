@@ -1,11 +1,27 @@
 #!/bin/bash
 
-export TEST_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDAxNSIsImVtYWlsIjoidHJ1bmcuaG9hbmcrdGVzdHVzZXJAc290YXRlay5jb20iLCJyb2xlIjoidXNlciIsIm9yZ2FuaXphdGlvbklkIjpudWxsLCJvcmdhbml6YXRpb25Pd25lciI6ZmFsc2UsImtleVRva2VuIjoiNDAwYmI2ODQtOWFmNi00MjkwLTg0ZTEtMDI0MTBlZTNiNDMyIiwidHlwIjoiQUNDRVNTIiwiaWF0IjoxNzY5NjU5NjI3LCJleHAiOjE3Njk3NDYwMjd9.T8zaY4iVD-0MAGYD4IPavzSw3yZrhcbd6iHyaUKEUTA"
+# ============================================
+# CẤU HÌNH - Thay đổi các giá trị bên dưới
+# ============================================
+
+# JWT Token để authenticate với API
+# Lấy token từ login hoặc developer tools của browser
+export TEST_TOKEN="YOUR_JWT_TOKEN_HERE"
+
+# URL của OpenAPI/Swagger JSON spec
+SWAGGER_URL="https://your-api.com/docs-json"
+
+# Thời gian chạy tối đa (ví dụ: 10m, 30m, 1h)
+MAX_TIME="30m"
+
+# ============================================
+# CHẠY EVOMASTER - Không cần sửa phần này
+# ============================================
 
 java -jar evomaster.jar \
   --blackBox true \
-  --bbSwaggerUrl https://test.api.processing.upmount.sotatek.works/docs-json \
+  --bbSwaggerUrl "$SWAGGER_URL" \
   --outputFormat JS_JEST \
   --outputFolder ./evomaster-tests \
-  --maxTime 30m \
+  --maxTime "$MAX_TIME" \
   --header0 "Authorization:Bearer $TEST_TOKEN"
