@@ -24,7 +24,19 @@ Kiểm tra phiên bản Java:
 java -version
 ```
 
-### 2. Cài đặt Node.js dependencies
+### 2. Tải EvoMaster
+
+Tải file `evomaster.jar` từ GitHub Releases:
+
+```bash
+# Tải phiên bản mới nhất (v5.0.2)
+curl -L -o evomaster.jar https://github.com/WebFuzzing/EvoMaster/releases/download/v5.0.2/evomaster.jar
+
+# Hoặc tải thủ công từ:
+# https://github.com/WebFuzzing/EvoMaster/releases
+```
+
+### 3. Cài đặt Node.js dependencies
 
 ```bash
 npm install
